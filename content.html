@@ -1,0 +1,88 @@
+<!-- @format -->
+
+<div class="container">
+	<div class="content_HeaderImg">
+		<img src="./images/backGround.jpg" width="1000px" height="400px" />
+	</div>
+	<!-- list product -->
+	<div class="content_products">
+		<h2>SẢN PHẨM BÁN CHẠY</h2>
+		<div class="content_list">
+			<div class="content_item" ng-repeat="product in products">
+				<div class="content_img">
+					<img src="{{product.image}}" alt="Xe may" />
+				</div>
+				<div class="content_detail">
+					<span class="category">{{product.Brand}}</span><br />
+					<span class="name">{{product.name}}</span><br />
+					<span class="dungTich">{{product.dungTich}}</span><br />
+					<span class="price">đ {{product.Price}}</span>
+				</div>
+			</div>
+		</div>
+		<h2>Yamaha</h2>
+		<div class="content_list">
+			<div
+				class="content_item"
+				ng-repeat="product in products | filter: 'Yamaha'"
+			>
+				<div class="content_img">
+					<img src="{{product.image}}" alt="Xe may" />
+				</div>
+				<div class="content_detail">
+					<span class="category">{{product.Brand}}</span><br />
+					<span class="name">{{product.name}}</span><br />
+					<span class="dungTich">{{product.dungTich}}</span><br />
+					<span class="price">đ {{product.Price}}</span>
+				</div>
+			</div>
+		</div>
+		<h2>Honda</h2>
+		<div class="content_list">
+			<div
+				class="content_item"
+				ng-repeat="product in products | filter: 'Honda'"
+			>
+				<div class="content_img">
+					<img src="{{product.image}}" alt="Xe may" />
+				</div>
+				<div class="content_detail">
+					<span class="category">{{product.Brand}}</span><br />
+					<span class="name">{{product.name}}</span><br />
+					<span class="dungTich">{{product.dungTich}}</span><br />
+					<span class="price">đ {{product.Price}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- logo -->
+	<div class="content_logos">
+		<div class="content_logo">
+			<div class="content_logo_img">
+				<img src="./images/logo1.png" alt="logo" />
+			</div>
+			<div class="content_logo_detail">
+				<h4>SẢN PHẨM CHÍNH</h4>
+				<span> Được sự ủy quyền bởi chính các hãng lớn. </span>
+			</div>
+		</div>
+		<div class="content_logo">
+			<div class="content_logo_img">
+				<img src="./images/logo2.png" alt="logo" />
+			</div>
+			<div class="content_logo_detail">
+				<h4>BẢO HÀNH DÀI HẠN</h4>
+				<span> Sản phẩm được bảo hành từ 12 đến 36 tháng </span>
+			</div>
+		</div>
+		<div class="content_logo">
+			<div class="content_logo_img">
+				<img src="./images/logo3.png" alt="logo" />
+			</div>
+			<div class="content_logo_detail">
+				<h4>GIÁ CẢ CẠNH TRANH</h4>
+				<span>Đem lại cho khách hàng những ưu đãi về giá cả hợp lý</span>
+			</div>
+		</div>
+	</div>
+</div>
