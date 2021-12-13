@@ -10,6 +10,7 @@ body {
 	width: 1170px;
 	margin: 0 auto;
 	box-sizing: border-box;
+	font-family: 'Times New Roman', Times, serif;
 }
 .container2 {
 	padding-left: 15px;
@@ -322,6 +323,114 @@ body {
 		a:hover {
 			background-color: rgb(64, 64, 233);
 			border: 1px solid rgb(64, 64, 233);
+		}
+	}
+}
+.dangNhap {
+	width: 100%;
+	h2 {
+		color: #4e4d4d;
+		font-weight: 400;
+	}
+	h4 {
+		color: #555454;
+		a {
+			color: #5f5f5f;
+			text-decoration: underline;
+		}
+	}
+	&_root {
+		width: 100%;
+		background-color: #f7f7f7;
+		border-radius: 10px;
+		padding: 5px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding-bottom: 50px;
+	}
+	&_FormInput {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	&_Form {
+		width: 40%;
+		font-size: 20px;
+		.sao {
+			color: red;
+		}
+		.quenMatKhau {
+			font-size: 15px;
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+		.btnDangNhap {
+			width: 100%;
+			border: none;
+			background-color: #fcda1a;
+			font-size: 20px;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			font-family: 'Times New Roman', Times, serif;
+			border-radius: 7px;
+		}
+		input {
+			width: calc(100% - 20px);
+			padding: 10px;
+			border: 1px solid #e2dada;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			outline: none;
+			font-size: 15px;
+		}
+		.dangNhapThem {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-items: center;
+			align-items: center;
+			p {
+				color: #5f5f5f;
+			}
+			.faceGoogle {
+				width: 60%;
+				display: flex;
+				flex-direction: row;
+				align-self: center;
+				justify-content: space-around;
+				.face {
+					width: 103px;
+					background-color: rgb(94, 94, 240);
+					border-radius: 5px;
+					padding: 5px;
+
+					i,
+					span {
+						color: white;
+					}
+					i {
+						margin-right: 2px;
+						padding-right: 3px;
+						border-right: 1px solid black;
+					}
+				}
+				.google {
+					width: 103px;
+					background-color: rgb(228, 29, 39);
+					border-radius: 5px;
+					padding: 5px;
+					i,
+					span {
+						color: white;
+					}
+					i {
+						margin-right: 2px;
+						padding-right: 3px;
+						border-right: 1px solid black;
+					}
+				}
+			}
 		}
 	}
 }

@@ -19,6 +19,9 @@ app.config(function($routeProvider) {
     .when("/dangNhap", {
         templateUrl : "../View/dangNhap.html",
     })
+    .when("/dangKy", {
+        templateUrl : "../View/dangKy.html",
+    })
     .otherwise({
         redirectTo: '/content'
     })
