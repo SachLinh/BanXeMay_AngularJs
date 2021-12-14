@@ -434,3 +434,40 @@ body {
 		}
 	}
 }
+.gioHang {
+	width: 100%;
+	&_root {
+		width: 100%;
+		h2 {
+			color: rgb(46, 0, 172);
+			font-size: 30px;
+		}
+	}
+	&_Show {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		.table {
+			width: 100%;
+			thead {
+				font-size: 25px;
+				font-family: 'Times New Roman', Times, serif;
+			}
+			tbody {
+				td {
+					text-align: center;
+					font-family: 'Times New Roman', Times, serif;
+					font-size: 18px;
+					.fas {
+						color: red;
+					}
+				}
+				.total {
+					font-size: 25px;
+					color: red;
+				}
+			}
+		}
+	}
+}

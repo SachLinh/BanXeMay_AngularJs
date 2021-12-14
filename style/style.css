@@ -429,4 +429,40 @@ body {
   border-right: 1px solid black;
 }
 
+.gioHang {
+  width: 100%;
+}
+.gioHang_root {
+  width: 100%;
+}
+.gioHang_root h2 {
+  color: #2e00ac;
+  font-size: 30px;
+}
+.gioHang_Show {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.gioHang_Show .table {
+  width: 100%;
+}
+.gioHang_Show .table thead {
+  font-size: 25px;
+  font-family: "Times New Roman", Times, serif;
+}
+.gioHang_Show .table tbody td {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+}
+.gioHang_Show .table tbody td .fas {
+  color: red;
+}
+.gioHang_Show .table tbody .total {
+  font-size: 25px;
+  color: red;
+}
+
 /*# sourceMappingURL=style.css.map */

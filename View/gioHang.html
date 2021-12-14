@@ -1,3 +1,49 @@
 <!-- @format -->
 
-<h1>Gio Hàng</h1>
+<div class="gioHang">
+	<div class="container">
+		<div class="gioHang_root">
+			<h2>Giỏ Hàng</h2>
+			<div class="gioHang_Show">
+				<table class="table" border="0" cellpadding="0" cellspacing="5">
+					<thead>
+						<tr style="border-bottom: 1px solid black">
+							<th>Sản phẩm</th>
+							<th>Giá</th>
+							<th>Dung tích</th>
+							<th>Hình ảnh</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat=" cart in carts" ng-init="setTotals(cart)">
+							<td>{{cart.name}}</td>
+							<td>{{cart.Price}}</td>
+							<td>{{cart.dungTich}}</td>
+							<td>
+								<img
+									src="{{cart.image}}"
+									alt="Xe may"
+									width="150"
+									height="100"
+								/>
+							</td>
+							<td>
+								<button
+									type="button"
+									ng-click="remove_cart(cart)"
+									class="btn btn-danger"
+								>
+									<i class="fas fa-backspace"></i>
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<td align="right" class="total">Total</td>
+							<td>{{total}} đ</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
