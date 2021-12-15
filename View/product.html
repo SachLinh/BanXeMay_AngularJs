@@ -1,0 +1,69 @@
+<!-- @format -->
+<div class="product">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Categories -->
+        <div class="categories">
+            <span>DANH MỤC SẢN PHẨM</span>
+            <ul>
+                <li><a href=""><i class="fa fa-angle-right"></i>YAMAHA</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>HONDA</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>SUZUKI</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>XE THỂ THAO</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>XE 50CC</a></li>
+            </ul>
+        </div> <!-- End categories -->
+        <!-- New products -->
+        <div class="new-product">
+            <span>SẢN PHẨM MỚI</span>
+            <div>
+                <div class="product-item" ng-repeat="item in newProducts">
+                    <div class="left col-3 img">
+                        <img src="{{item.image}}" width="100%" height="100px">
+                    </div>
+                    <div class="left col-9 info">
+                        <div class="product-name">{{item.name}}</div>
+                        <div class="new-price">{{getNewPrice(item.Price)}}<span><u>đ</u></span></div>
+                        <div class="product-price">{{item.Price}}<span><u>đ</u></span></div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End new products -->
+    </div>
+    <!-- Main-content -->
+    <div class="main-content">
+        <!-- Filter -->
+        <div class="filter">
+            <div class="left col-2">
+                <span>Grid</span>
+                <span>List</span>
+            </div>
+            <div class="right col-6">
+                <span>Đang có {{products.length}} sản phẩm</span>
+                <span class="sort-filter">
+                    <select>
+                        <option selected value="default">Mặc định</option>
+                        <option value="alpha-asc">A &rarr; Z</option>
+                        <option value="alpha-desc">Z &rarr; A</option>
+                        <option value="price-asc">Giá tăng dần</option>
+                        <option value="price-desc">Giá giảm dần</option>
+                    </select>
+                </span>
+            </div>
+        </div> <!-- End filter-->
+        <!-- Product list -->
+        <div class="product-list">
+            <div class="product-item" ng-repeat="item in products">
+                <div class="img">
+                    <img src="{{item.image}}" width="100%" height="150px">
+                </div>
+                <div class="info">
+                    <div class="product-name">{{item.name}}</div>
+                    <div class="new-price">
+                        {{item.Price}}<span><u>đ</u></span>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End product list -->
+    </div> <!-- End main content-->
+</div>

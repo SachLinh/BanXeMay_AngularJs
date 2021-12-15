@@ -1,4 +1,9 @@
 /** @format */
+
+* {
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
 }
@@ -8,8 +13,8 @@ ul li {
 }
 
 body {
-  width: 1170px;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: "Times New Roman", Times, serif;
 }
@@ -20,8 +25,8 @@ body {
 }
 
 .container {
-  padding-left: 60px;
-  padding-right: 60px;
+  width: 1170px;
+  margin: 0 auto;
 }
 
 .header {
@@ -35,6 +40,7 @@ body {
 }
 .header h1 {
   margin-right: 50px;
+  margin-left: 10px;
   color: #11519b;
 }
 .header_TimKiem {
@@ -106,6 +112,8 @@ body {
 
 .content {
   width: 100%;
+  width: 1170px;
+  margin: 0 auto;
 }
 .content_HeaderImg {
   margin-top: 30px;
