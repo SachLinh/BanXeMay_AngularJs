@@ -1,4 +1,6 @@
 var app = angular.module("myApp", ["ngRoute", "ngAnimate"]);
+
+
 app.config(function($routeProvider) {
     $routeProvider
     .when("/content", {
@@ -16,7 +18,7 @@ app.config(function($routeProvider) {
     })
     .when("/productDetail/:productId", {
         templateUrl : "../View/product_detail.html",
-        controller:"Detail_ctrl"
+        controller:"productCtrl"
     })
     .when("/gioHang", {
         templateUrl : "../View/gioHang.html",
@@ -31,6 +33,7 @@ app.config(function($routeProvider) {
         redirectTo: '/content'
     })
 });
+
 var listLT = [
     { id:"1",Brand:"Yamaha",name:"Exciter",Price:49000000,dungTich:"155",image:"../images/Yamaha_Ex155.png"},
     { id:"2",Brand:"Yamaha",name:"Serius",Price:24000000,dungTich:"115",image:"../images/Yamaha_Serius_115.png"},
@@ -42,6 +45,7 @@ var listLT = [
     { id:"8",Brand:"Honda",name:"Future",Price:24000000,dungTich:"125",image:"../images/Honda_Future_125.png"},
     { id:"9",Brand:"Honda",name:"Air Blade",Price:42000000,dungTich:"125",image:"../images/Honda_AB_125.png"}
  ];
+ 
  app.controller('myCtrl', function($scope){
     $scope.products = listLT;
     $scope.carts=[];
@@ -65,36 +69,66 @@ var listLT = [
    
 });
 
-app.controller('productCtrl', ['$scope', function($scope) {
+app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 
+    // Product
     $scope.newProducts = [];
-
+    $scope.productQuickView = [];
+    $scope.pageSize = 8;
+    $scope.begin = 0;
+    $scope.currentPage = 1;
+    $scope.pageCount = Math.ceil($scope.products.length / $scope.pageSize);
+    $scope.hiddenView = false;
+    // Product detail
+    var id = $routeParams.productId;
+    angular.forEach($scope.products, function(value, key) {
+        if(value.id == id) {
+            $scope.productDetail = angular.copy($scope.products[key]);
+        }
+    })
+    //New product
     for(let i = $scope.products.length - 1; i >= $scope.products.length - 3; i--) {
         $scope.newProducts.push($scope.products[i]);
     }
 
+    // Event
     $scope.getNewPrice = function(price) {
         return price * 0.9;
     }
-}
-]);
-app.controller('Detail_ctrl', ['$scope', '$routeParams', function($scope, $routeParams){
-    var id = $routeParams.productId;
-    for(let i=0; i<$scope.products.length; i++)
-    {
-        if($scope.products[i].id == id)
-        {
-            $scope.productDetail = angular.copy($scope.products[i]);
+
+    $scope.quickView = function(product) {
+        $scope.productQuickView = product;
+        $scope.hiddenView = true;
+    }
+
+    $scope.closeQuickView = function() {
+        $scope.hiddenView = false;
+    }
+    
+    $scope.firstPage = function() {
+        $scope.begin = 0;
+        $scope.currentPage = 1;
+    }
+
+    $scope.previousPage = function() {
+        if($scope.begin > 0) {
+            $scope.begin -= $scope.pageSize;
+            $scope.currentPage -= 1;
         }
     }
-    $scope.newProducts = [];
 
-    for(let i = $scope.products.length - 1; i >= $scope.products.length - 3; i--) {
-        $scope.newProducts.push($scope.products[i]);
+    $scope.forwardPage = function() {
+        if($scope.begin < ($scope.pageCount - 1) * $scope.pageSize) {
+            $scope.begin += $scope.pageSize;
+            $scope.currentPage += 1;
+        }
     }
 
-    $scope.getNewPrice = function(price) {
-        return price * 0.9;
+    $scope.lastPage = function() {
+        $scope.begin = ($scope.pageCount - 1) * $scope.pageSize;
+        $scope.currentPage = $scope.pageCount;
     }
+
 }]);
+
 

@@ -5,33 +5,13 @@
 		<!-- Categories -->
 		<div class="categories">
 			<span>DANH MỤC SẢN PHẨM</span>
-			<ul ng-model="selectCatalogy">
-				<li>
-					<a href="" value="Yamaha"
-						><i class="fa fa-angle-right"></i>YAMAHA</a
-					>
-				</li>
-				<li>
-					<a href="" value="Honda"
-						><i class="fa fa-angle-right"></i>HONDA</a
-					>
-				</li>
-				<li>
-					<a href="" value="150"
-						><i class="fa fa-angle-right"></i>XE THỂ THAO</a
-					>
-				</li>
-				<li>
-					<a href="" value="125"
-						><i class="fa fa-angle-right"></i>XE TẦM TRUNG</a
-					>
-				</li>
-				<li>
-					<a href="" value="50"
-						><i class="fa fa-angle-right"></i>XE 50CC</a
-					>
-				</li>
-			</ul>
+			<ul>
+                <li><a href=""><i class="fa fa-angle-right"></i>YAMAHA</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>HONDA</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>XE THỂ THAO</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>XE TẦM TRUNG</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>XE 50CC</a></li>
+            </ul>
 		</div>
 		<!-- End categories -->
 		<!-- New products -->
@@ -40,7 +20,10 @@
 			<div>
 				<div class="product-item" ng-repeat="item in newProducts">
 					<div class="left col-3 img">
-						<img src="{{item.image}}" width="100%" height="100px" />
+						<a href="#!/productDetail/{{item.id}}">
+							<img src="{{item.image}}" width="100%" height="100px" />
+						</a>
+						<div class="quick-view-btn" ng-click="quickView(item)">Xem nhanh</div>
 					</div>
 					<div class="left col-9 info">
 						<div class="product-name">{{item.name}}</div>
@@ -56,54 +39,99 @@
 		</div>
 		<!-- End new products -->
 	</div>
+    <!-- End Sidebar -->
 	<!-- Main-content -->
-	<div class="main-content">
-		<!-- Filter -->
-		<div class="filter">
-			<div class="left col-2">
-				<span style="color: red; font-size: 20px">Sản phẩm </span>
-			</div>
-			<div class="right col-6">
-				<span>Cửa hàng đang có tất cả {{products.length}} sản phẩm</span>
-				<select class="form-control" ng-model="sortBy">
-					<option selected value="None">-- Select --</option>
-					<option value="name">Tên A -> Z</option>
-					<option value="-name">Tên Z -> A</option>
-					<option value="-Price">Giá từ cao đến thấp</option>
-					<option value="Price">Giá từ thấp đến cao</option>
-				</select>
-			</div>
-		</div>
-		<!-- End filter-->
-		<!-- Product list -->
-		<div class="product-list">
-			<div
-				class="product-item"
-				ng-repeat="item in products | orderBy:sortBy | filter: find"
-			>
-				<div class="img">
+    <div class="main-content">
+        <!-- Filter -->
+        <div class="filter">
+            <div class="left col-2">
+                <label>
+                    <input type="radio" name="viewMode" ng-model="list" >
+                    <i class="fa fa-th-large"></i>
+                </label>
+                <label>
+                    <input type="radio" name="viewMode" ng-model="grid">
+                    <i class="fa fa-th-list"></i>
+                </label>
+            </div>
+            <div class="right col-6">
+                <span>Đang có {{products.length}} sản phẩm</span>
+                <span class="sort-filter">
+                    <select ng-model="sort">
+                        <option selected value="">Mặc định</option>
+                        <option value="name">A &rarr; Z</option>
+                        <option value="-name">Z &rarr; A</option>
+                        <option value="Price">Giá tăng dần</option>
+                        <option value="-Price">Giá giảm dần</option>
+                    </select>
+                </span>
+            </div>
+        </div> <!-- End filter-->
+        <!-- Product list -->
+        <div class="product-list">
+            <div class="product-item" ng-repeat="item in products | orderBy: sort | limitTo: pageSize: begin">
+                <div class="img">
 					<a href="#!/productDetail/{{item.id}}">
-						<img src="{{item.image}}" width="100%" height="150px" />
+						<img src="{{item.image}}" width="100%" height="150px">
 					</a>
-					<button
-						class="addCart"
-						type="button"
-						ng-click="add_cart(product)"
-					>
-						Add to card
-					</button>
-				</div>
-				<div class="info">
-					<div class="product-name" style="text-align: center">
-						{{item.name}}
-					</div>
-					<div class="new-price" style="text-align: center">
-						{{item.Price}}<span><u>đ</u></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End product list -->
-	</div>
+					<div class="quick-view-btn" ng-click="quickView(item)">Xem nhanh</div>
+                </div>
+                <div class="info">
+                    <div class="product-name">{{item.name}}</div>
+                    <div class="new-price">  
+                        {{item.Price}}<span><u>đ</u></span>
+                    </div>
+                    <input type="button" ng-click="add_cart(item)" value="Add cart">
+                </div>
+            </div>
+        </div> <!-- End product list -->
+        <div class="paged-list">
+            <a href="" ng-click="firstPage()"><i class="fas fa-backward"></i></a>
+            <a href="" ng-click="previousPage()"><i class="fas fa-caret-left"></i></a>
+            <span>{{currentPage}} / {{pageCount}}</span>
+            <a href="" ng-click="forwardPage()"><i class="fas fa-caret-right"></i></a>
+            <a href="" ng-click="lastPage()"><i class="fas fa-forward"></i></a>
+        </div>
+    </div> 
 	<!-- End main content-->
+    <!-- Quick view  -->
+    <div class="hidden-view" ng-show="hiddenView">
+        <div class="blur"></div>
+        <div class="quick-view">
+            <!-- Header -->
+            <div class="header">
+                <div class="title">THÔNG TIN SẢN PHẨM</div>
+                <div class="close">
+                    <i class="fas fa-window-close" ng-click="closeQuickView()"></i>
+                </div>
+            </div>
+            <!-- Main info -->
+            <div class="main-info">
+                <div class="img left">
+                    <a href="#!/productDetail/{{productQuickView.id}}">
+                        <img src="{{productQuickView.image}}" width="100%" height="100%">
+                    </a>
+                </div>
+                <div class="info left">
+                    <div class="name">{{productQuickView.name}}</div>
+                    <div class="brand">  
+                        Hãng: {{productQuickView.Brand}}
+                    </div>
+                    <div class="capacity">  
+                        Dung tích: {{productQuickView.dungTich}} CC
+                    </div>
+                    <div class="price">  
+                        Giá: {{productQuickView.Price}}<span><u>đ</u></span>
+                    </div>
+                    <div class="quantity" ng-init="quantity = 1">  
+                        <label for="quantity">Số lượng: </label>
+                        <input type="number" name="quantity" ng-model="quantity" value="1" step="1" min="1">
+                    </div>
+                    <input type="button" ng-click="add_cart(productQuickView)" value="Add cart">
+                </div>
+            </div>
+            <!-- End main info -->
+        </div>
+    </div>
+    <!-- End Quick view  -->
 </div>
