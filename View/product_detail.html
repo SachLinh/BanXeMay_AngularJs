@@ -1,3 +1,130 @@
-<div>
-    Chi tieets san phamr
+<!-- @format -->
+<!-- @format -->
+<div class="product">
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<!-- Categories -->
+		<div class="categories">
+			<span>DANH MỤC SẢN PHẨM</span>
+			<ul ng-model="selectCatalogy">
+				<li>
+					<a href="" value="Yamaha"
+						><i class="fa fa-angle-right"></i>YAMAHA</a
+					>
+				</li>
+				<li>
+					<a href="" value="Honda"
+						><i class="fa fa-angle-right"></i>HONDA</a
+					>
+				</li>
+				<li>
+					<a href="" value="150"
+						><i class="fa fa-angle-right"></i>XE THỂ THAO</a
+					>
+				</li>
+				<li>
+					<a href="" value="125"
+						><i class="fa fa-angle-right"></i>XE TẦM TRUNG</a
+					>
+				</li>
+				<li>
+					<a href="" value="50"
+						><i class="fa fa-angle-right"></i>XE 50CC</a
+					>
+				</li>
+			</ul>
+		</div>
+		<!-- End categories -->
+		<!-- New products -->
+		<div class="new-product">
+			<span>SẢN PHẨM MỚI</span>
+			<div>
+				<div class="product-item" ng-repeat="item in newProducts">
+					<div class="left col-3 img">
+						<img src="{{item.image}}" width="100%" height="100px" />
+					</div>
+					<div class="left col-9 info">
+						<div class="product-name">{{item.name}}</div>
+						<div class="new-price">
+							{{getNewPrice(item.Price)}}<span><u>đ</u></span>
+						</div>
+						<div class="product-price">
+							{{item.Price}}<span><u>đ</u></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End new products -->
+	</div>
+	<!-- Main-content -->
+	<div class="main-content">
+		<!-- Filter -->
+		<div class="filter">
+			<div class="left col-2">
+				<span style="color: red; font-size: 20px">Sản phẩm </span>
+			</div>
+			<div class="right col-6">
+				<span>Đang có {{products.length}} sản phẩm</span>
+				<select class="form-control" ng-model="sortBy">
+					<option selected value="None">-- Select --</option>
+					<option value="name">Tên A -> Z</option>
+					<option value="-name">Tên Z -> A</option>
+					<option value="-Price">Giá từ cao đến thấp</option>
+					<option value="Price">Giá từ thấp đến cao</option>
+				</select>
+			</div>
+		</div>
+		<!-- End filter-->
+		<!-- Product list -->
+		<div class="product-list">
+			<div class="detail" align="center">
+				<input type="hidden" ng-model="productDetail.id" />
+				<div class="detail_image">
+					<img src="{{productDetail.image}}" alt="anh" />
+				</div>
+				<div class="detail_info">
+					<div class="detail_name">{{productDetail.name}}</div>
+					<div class="detail_hang">
+						<span>Hãng sản xuất: </span> {{productDetail.Brand}}
+					</div>
+					<div class="divRong"></div>
+					<div class="detail_dungTich">
+						<span>Dung tích: </span> {{productDetail.dungTich}} cc
+					</div>
+					<div class="divRong"></div>
+					<div class="detail_gia">
+						<span>Giá bán: </span> {{productDetail.Price}} đ
+					</div>
+					<div class="divRong"></div>
+					<button
+						class="addCart_detail"
+						type="button"
+						ng-click="add_cart(product)"
+					>
+						Add to card
+					</button>
+					<div class="detail_icon">
+						<div class="div_icon">
+							<i class="fab fa-facebook"></i>
+						</div>
+						<div class="div_icon">
+							<i class="fab fa-twitter"></i>
+						</div>
+						<div class="div_icon">
+							<i class="far fa-envelope"></i>
+						</div>
+						<div class="div_icon">
+							<i class="fab fa-instagram"></i>
+						</div>
+						<div class="div_icon">
+							<i class="fab fa-google"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End product list -->
+	</div>
+	<!-- End main content-->
 </div>

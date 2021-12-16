@@ -1,0 +1,98 @@
+/** @format */
+
+.detail {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+.detail_info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 50%;
+}
+.detail_name {
+	font-size: 40px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	color: red;
+	margin-bottom: 20px;
+}
+.detail_hang {
+	font-size: 30px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+	color: rgb(9, 24, 107);
+}
+.detail_hang span {
+	font-size: 20px;
+	color: rgb(46, 45, 45);
+	margin-right: 20px;
+}
+
+.detail_dungTich {
+	font-size: 25px;
+	color: rgb(9, 24, 107);
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.detail_dungTich span {
+	font-size: 20px;
+	color: rgb(46, 45, 45);
+	margin-right: 58px;
+}
+
+.detail_gia {
+	font-size: 25px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	color: rgb(9, 24, 107);
+}
+.detail_gia span {
+	font-size: 20px;
+	color: rgb(46, 45, 45);
+	margin-right: 75px;
+}
+.addCart_detail {
+	margin-top: 20px;
+	width: 150px;
+	height: 30px;
+	font-size: 20px;
+	color: rgb(9, 7, 150);
+	background-color: rgb(245, 235, 142);
+}
+.divRong {
+	width: 100%;
+	border-bottom: 1px dashed;
+}
+.detail_icon {
+	width: 100%;
+	margin-top: 20px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+.detail_icon .div_icon {
+	border: 1px solid rgb(109, 106, 106);
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: relative;
+	margin-right: 10px;
+	border: 1px solid rgb(223, 144, 144);
+}
+.detail_icon i {
+	position: absolute;
+	top: 23%;
+	left: 23%;
+	color: rgb(235, 112, 112);
+}
+.div_icon:hover {
+	background-color: rgb(230, 199, 184);
+	border: springgreen;
+}
+.div_icon:hover i {
+	color: rgb(61, 20, 172);
+}

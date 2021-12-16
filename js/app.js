@@ -12,7 +12,11 @@ app.config(function($routeProvider) {
     })
     .when("/product", {
         templateUrl : "../View/product.html",
-        controller: 'productCtrl'
+       controller:"productCtrl"
+    })
+    .when("/productDetail/:productId", {
+        templateUrl : "../View/product_detail.html",
+        controller:"Detail_ctrl"
     })
     .when("/gioHang", {
         templateUrl : "../View/gioHang.html",
@@ -33,14 +37,12 @@ var listLT = [
     { id:"3",Brand:"Yamaha",name:"NVX",Price:50000000,dungTich:"125",image:"../images/Yamaha_NVX.png"},
     { id:"4",Brand:"Yamaha",name:"Grande",Price:36000000,dungTich:"125",image:"../images/Yamaha_Grande.png"},
     { id:"5",Brand:"Honda",name:"Wave",Price:19000000,dungTich:"115",image:"../images/Honda_Wave_110.jpg"},
-    { id:"6",Brand:"Honda",name:"Wave",Price:19000000,dungTich:"115",image:"../images/Honda_Wave_110.jpg"},
-    { id:"7",Brand:"Honda",name:"Wave",Price:19000000,dungTich:"115",image:"../images/Honda_Wave_110.jpg"},
-    { id:"8",Brand:"Honda",name:"Wave",Price:19000000,dungTich:"115",image:"../images/Honda_Wave_110.jpg"},
-    { id:"9",Brand:"Honda",name:"Wave",Price:19000000,dungTich:"115",image:"../images/Honda_Wave_110.jpg"},
-    { id:"10",Brand:"Honda",name:"Wave",Price:19000000,dungTich:"115",image:"../images/Honda_Wave_110.jpg"},
-    { id:"11",Brand:"Honda",name:"SH",Price:59000000,dungTich:"155",image:"../images/Honda_Sh_155.png"}
+    { id:"6",Brand:"Honda",name:"CB",Price:109000000,dungTich:"150",image:"../images/Honda_CB.jpg"},
+    { id:"7",Brand:"Honda",name:"SH",Price:59000000,dungTich:"155",image:"../images/Honda_Sh_155.png"},
+    { id:"8",Brand:"Honda",name:"Future",Price:24000000,dungTich:"125",image:"../images/Honda_Future_125.png"},
+    { id:"9",Brand:"Honda",name:"Air Blade",Price:42000000,dungTich:"125",image:"../images/Honda_AB_125.png"}
  ];
-app.controller('myCtrl', function($scope, $http){
+ app.controller('myCtrl', function($scope){
     $scope.products = listLT;
     $scope.carts=[];
     $scope.add_cart = function(product){ //set a function name add_cart
@@ -60,6 +62,7 @@ app.controller('myCtrl', function($scope, $http){
             $scope.total -= cart.Price; //deduct the price of the product  simultaneously when deleted
         }
     }
+   
 });
 
 app.controller('productCtrl', ['$scope', function($scope) {
@@ -73,5 +76,25 @@ app.controller('productCtrl', ['$scope', function($scope) {
     $scope.getNewPrice = function(price) {
         return price * 0.9;
     }
+}
+]);
+app.controller('Detail_ctrl', ['$scope', '$routeParams', function($scope, $routeParams){
+    var id = $routeParams.productId;
+    for(let i=0; i<$scope.products.length; i++)
+    {
+        if($scope.products[i].id == id)
+        {
+            $scope.productDetail = angular.copy($scope.products[i]);
+        }
+    }
+    $scope.newProducts = [];
 
+    for(let i = $scope.products.length - 1; i >= $scope.products.length - 3; i--) {
+        $scope.newProducts.push($scope.products[i]);
+    }
+
+    $scope.getNewPrice = function(price) {
+        return price * 0.9;
+    }
 }]);
+
