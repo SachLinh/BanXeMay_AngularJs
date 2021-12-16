@@ -7,11 +7,16 @@ ul li {
   list-style: none;
 }
 
+html {
+  background-color: #4e4d4d;
+}
+
 body {
   width: 1170px;
   margin: 0 auto;
   box-sizing: border-box;
   font-family: "Times New Roman", Times, serif;
+  background-color: #fff;
 }
 
 .container2 {
@@ -34,11 +39,11 @@ body {
   align-items: center;
 }
 .header h1 {
-  margin-right: 50px;
+  margin-right: 115px;
   color: #11519b;
 }
 .header_TimKiem {
-  margin-right: 50px;
+  margin-right: 95px;
 }
 .header_TimKiem select {
   width: 50px;
@@ -51,6 +56,8 @@ body {
   border-radius: 20px;
   margin-right: 40px;
   padding-left: 20px;
+  outline: none;
+  border: 0.5px solid #777777;
 }
 .header_LogIn {
   padding-top: 10px;
