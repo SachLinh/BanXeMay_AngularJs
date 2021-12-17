@@ -20,6 +20,10 @@ app.config(function($routeProvider) {
         templateUrl : "../View/product_detail.html",
         controller:"productCtrl"
     })
+    .when("/product/:brand", {
+        templateUrl : "../View/product.html",
+        controller:"productCtrl"
+    })
     .when("/gioHang", {
         templateUrl : "../View/gioHang.html",
     })
@@ -45,9 +49,12 @@ var listLT = [
     { id:"8",Brand:"Honda",name:"Future",Price:24000000,dungTich:"125",image:"../images/Honda_Future_125.png"},
     { id:"9",Brand:"Honda",name:"Air Blade",Price:42000000,dungTich:"125",image:"../images/Honda_AB_125.png"}
  ];
+
+var listBrand = ["Yamaha", "Honda", "Suzuki"];
  
  app.controller('myCtrl', function($scope){
     $scope.products = listLT;
+    $scope.brands = listBrand;
     $scope.carts=[];
     $scope.add_cart = function(product){ //set a function name add_cart
         if(product){ //check if the product is already declared within the function
@@ -79,21 +86,31 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
     $scope.currentPage = 1;
     $scope.pageCount = Math.ceil($scope.products.length / $scope.pageSize);
     $scope.hiddenView = false;
+    $scope.count = listLT.length;
     // Product detail
     var id = $routeParams.productId;
     angular.forEach($scope.products, function(value, key) {
         if(value.id == id) {
             $scope.productDetail = angular.copy($scope.products[key]);
         }
-    })
+    });
     //New product
     for(let i = $scope.products.length - 1; i >= $scope.products.length - 3; i--) {
         $scope.newProducts.push($scope.products[i]);
+    }
+    //Filter by brand
+    $scope.brand = "";
+    if($routeParams.brand) {
+        $scope.brand = $routeParams.brand;
     }
 
     // Event
     $scope.getNewPrice = function(price) {
         return price * 0.9;
+    }
+    
+    $scope.changeViewMode = function() {
+        $scope.viewMode = !$scope.viewMode;
     }
 
     $scope.quickView = function(product) {
