@@ -1,7 +1,7 @@
 app.controller('myCtrl', function($scope){
     // $scope.products = listLT;
     // $scope.brands = listBrand;
-
+    
     $scope.products = [];
     $scope.brands = [];
     if(localStorage.getItem('brands')) {

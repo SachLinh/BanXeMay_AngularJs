@@ -15,7 +15,15 @@
 		<!-- End categories -->
         <!-- Filter price -->
         <div class="filter-price">
-            <span>TÌM THEO GIÁ XE</span>
+            <span id="title">LỌC THEO GIÁ</span>
+            <div id="container">
+                <input type="text" ng-model="fromPrice" placeholder="Từ">
+                <i class="fas fa-minus"></i>
+                <input type="text" ng-model="toPrice" placeholder="Đến">
+            </div>
+            <div id="container">
+                <button ng-click="filterByPrice()">Áp dụng</button>
+            </div>
         </div>
         <!-- End filter price -->
         <!-- New products -->
@@ -49,17 +57,18 @@
         <!-- Filter -->
         <div class="filter">
             <div class="left col-2">
-                <label ng-show="viewMode" ng-click="changeMode()">
+                <label ng-show="viewMode" ng-click="changeViewMode()">
                     <input type="checkbox" ng-model="viewMode">
                     <i class="fa fa-th-large"></i>
                 </label>
-                <label ng-show="!viewMode" ng-click="changeMode()">
+                <label ng-show="!viewMode" ng-click="changeViewMode()">
                     <input type="checkbox" ng-model="viewMode">
                     <i class="fa fa-th-list"></i>
                 </label>
             </div>
             <div class="right col-6">
-                <span>Đang có {{count}} sản phẩm</span>
+                <span ng-show="(count > 0)">Đang có {{count}} sản phẩm</span>
+                <span ng-hide="(count > 0)">Không tìm thấy sản phẩm nào</span>
                 <span class="sort-filter">
                     <select ng-model="sort">
                         <option selected value="">Mặc định</option>
@@ -97,7 +106,7 @@
                 </div>
             </div>
         </div> <!-- End product list -->
-        <div class="paged-list">
+        <div class="paged-list" ng-show="(count > 0)">
             <a href="" ng-click="firstPage()"><i class="fas fa-backward"></i></a>
             <a href="" ng-click="previousPage()"><i class="fas fa-caret-left"></i></a>
             <span>{{currentPage}} / {{pageCount}}</span>
