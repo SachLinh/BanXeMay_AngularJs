@@ -8,11 +8,10 @@
 		<div class="categories">
 			<span>DANH MỤC SẢN PHẨM</span>
 			<ul>
-                <li><a href=""><i class="fa fa-angle-right"></i>YAMAHA</a></li>
-                <li><a href=""><i class="fa fa-angle-right"></i>HONDA</a></li>
-                <li><a href=""><i class="fa fa-angle-right"></i>XE THỂ THAO</a></li>
-                <li><a href=""><i class="fa fa-angle-right"></i>XE TẦM TRUNG</a></li>
-                <li><a href=""><i class="fa fa-angle-right"></i>XE 50CC</a></li>
+                <li><a href="#!/product" ng-click="repage()"><i class="fa fa-angle-right"></i>TẤT CẢ</a></li>
+                <li ng-repeat="item in brands">
+                    <a href="#!/product/{{item}}"><i class="fa fa-angle-right"></i>{{item | uppercase}}</a>
+                </li>
             </ul>
 		</div>
 		<!-- End categories -->
@@ -30,10 +29,10 @@
 					<div class="left col-9 info">
 						<div class="product-name">{{item.name}}</div>
 						<div class="new-price">
-							{{getNewPrice(item.Price)}}<span><u>đ</u></span>
+							{{getNewPrice(item.Price) | number}}<span class="currency small"><u>đ</u></span>
 						</div>
 						<div class="product-price">
-							{{item.Price}}<span><u>đ</u></span>
+							{{item.Price | number}}<span class="currency small"><u>đ</u></span>
 						</div>
 					</div>
 				</div>
@@ -41,6 +40,7 @@
 		</div>
 		<!-- End new products -->
 	</div>
+    <!-- End Sidebar -->
 	<!-- Main-content -->
 	<div class="main-content">
 		<!-- Product list -->
@@ -96,7 +96,7 @@
 	<!-- End main content-->
     <!-- Quick view  -->
     <div class="hidden-view" ng-show="hiddenView">
-        <div class="blur"></div>
+        <div class="blur" ng-click="closeQuickView()"></div>
         <div class="quick-view">
             <!-- Header -->
             <div class="header">
@@ -108,25 +108,26 @@
             <!-- Main info -->
             <div class="main-info">
                 <div class="img left">
-                    <a href="#!/productDetail/{{productQuickView.id}}">
-                        <img src="{{productQuickView.image}}" width="100%" height="100%">
-                    </a>
+                    <img src="{{productQuickView.image}}" width="100%" height="100%">
                 </div>
                 <div class="info left">
                     <div class="name">{{productQuickView.name}}</div>
                     <div class="brand">  
-                        Hãng: {{productQuickView.brand}}
+                        <span>Hãng</span> {{productQuickView.Brand}}
                     </div>
                     <div class="capacity">  
-                        Dung tích: {{productQuickView.Price}}
+                        <span>Dung tích</span> {{productQuickView.dungTich}}cc
                     </div>
                     <div class="price">  
-                        Giá: {{productQuickView.Price}}<span><u>đ</u></span>
+                        <span>Giá</span> {{productQuickView.Price | number}}<div class="currency"><u>đ</u></div>
                     </div>
-                    <div class="quantity">  
-                        Số lượng: 
+                    <div class="quantity" ng-init="quantity = 1">  
+                        <span><label for="quantity">Số lượng</label></span>
+                        <input type="number" name="quantity" ng-model="quantity" value="1" step="1" min="1">
                     </div>
-                    <input type="button" ng-click="add_cart(productQuickView)" value="Add cart">
+                    <div align="center">
+                        <input type="button" ng-click="add_cart(productQuickView)" value="Add cart" class="add-cart-btn">
+                    </div>
                 </div>
             </div>
             <!-- End main info -->
