@@ -1,6 +1,18 @@
 app.controller('myCtrl', function($scope){
-    $scope.products = listLT;
-    $scope.brands = listBrand;
+    // $scope.products = listLT;
+    // $scope.brands = listBrand;
+
+    $scope.products = [];
+    $scope.brands = [];
+    if(localStorage.getItem('brands')) {
+        $scope.brands = angular.fromJson(localStorage.getItem('brands'));
+    }
+    
+    if(localStorage.getItem('bikes')) {
+        $scope.products = angular.fromJson(localStorage.getItem('bikes'));
+    }
+
+
     $scope.carts=[];
     $scope.add_cart = function(product){ //set a function name add_cart
         if(product){ //check if the product is already declared within the function

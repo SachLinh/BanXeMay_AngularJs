@@ -14,3 +14,9 @@ var listLT = [
 
 var listBrand = ["Yamaha", "Honda", "Suzuki"];
  
+if(localStorage.getItem('brands') == null) {
+    localStorage.setItem('brands', angular.toJson(listBrand));
+}
+if(localStorage.getItem('bikes') == null) {
+    localStorage.setItem('bikes', angular.toJson(listLT));
+}

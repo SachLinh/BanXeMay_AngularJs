@@ -6,14 +6,19 @@
 		<div class="categories">
 			<span>DANH MỤC SẢN PHẨM</span>
 			<ul>
-                <li><a href="#!/product" ng-click="repage()"><i class="fa fa-angle-right"></i>TẤT CẢ</a></li>
+                <li><a ng-click="all()"><i class="fa fa-angle-right"></i>TẤT CẢ</a></li>
                 <li ng-repeat="item in brands">
-                    <a href="#!/product/{{item}}"><i class="fa fa-angle-right"></i>{{item | uppercase}}</a>
+                    <a ng-click="getBrand(item)"><i class="fa fa-angle-right"></i>{{item | uppercase}}</a>
                 </li>
             </ul>
 		</div>
 		<!-- End categories -->
-		<!-- New products -->
+        <!-- Filter price -->
+        <div class="filter-price">
+            <span>TÌM THEO GIÁ XE</span>
+        </div>
+        <!-- End filter price -->
+        <!-- New products -->
 		<div class="new-product">
 			<span>SẢN PHẨM MỚI</span>
 			<div>

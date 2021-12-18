@@ -2,14 +2,19 @@
 app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 
     // Product
+    $scope.brands = angular.fromJson(localStorage.getItem('brands'));
+    $scope.products = angular.fromJson(localStorage.getItem('bikes'));
     $scope.newProducts = [];
     $scope.productQuickView = [];
-    $scope.pageSize = 8;
-    $scope.begin = 0;
-    $scope.currentPage = 1;
-    $scope.pageCount = Math.ceil($scope.products.length / $scope.pageSize);
     $scope.hiddenView = false;
-    $scope.count = listLT.length;
+    var update = function() {
+        $scope.pageSize = 8;
+        $scope.begin = 0;
+        $scope.currentPage = 1;
+        $scope.pageCount = Math.ceil($scope.products.length / $scope.pageSize);
+        $scope.count = $scope.products.length;
+    };
+    update();
     // Product detail
     var id = $routeParams.productId;
     angular.forEach($scope.products, function(value, key) {
@@ -25,6 +30,22 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
     $scope.brand = "";
     if($routeParams.brand) {
         $scope.brand = $routeParams.brand;
+    }
+
+    $scope.all = function() {
+        $scope.products = angular.fromJson(localStorage.getItem('bikes'));
+        update();
+    }
+
+    $scope.getBrand = function(item) {
+        $scope.products = [];
+        var bikes = angular.fromJson(localStorage.getItem('bikes'));
+        for(let i = 0; i < bikes.length; i++) {
+            if(bikes[i].Brand == item) {
+                $scope.products.push(bikes[i]);
+            }
+        }
+        update();
     }
 
     // Event
