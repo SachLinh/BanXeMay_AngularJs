@@ -1,7 +1,7 @@
 app.controller('myCtrl', function($scope){
     // $scope.products = listLT;
     // $scope.brands = listBrand;
-    
+
     $scope.products = [];
     $scope.brands = [];
     if(localStorage.getItem('brands')) {
@@ -12,24 +12,79 @@ app.controller('myCtrl', function($scope){
         $scope.products = angular.fromJson(localStorage.getItem('bikes'));
     }
 
+    $scope.carts= [];
+    if(window.sessionStorage.getItem('carts') == null) {
+        window.sessionStorage.setItem('carts', angular.toJson($scope.carts));
+    }
+    if(window.sessionStorage.getItem('carts')) {
+        $scope.carts = angular.fromJson(window.sessionStorage.getItem('carts'));
+    }
 
-    $scope.carts=[];
-    $scope.add_cart = function(product){ //set a function name add_cart
-        if(product){ //check if the product is already declared within the function
-            $scope.carts.push({id: product.id, name: product.name, Price: product.Price, dungTich : product.dungTich, image: product.image});
-        }	
-    }
     $scope.total = 0;
-    $scope.setTotals = function(cart){ //set a function name setTotals 
-        if(cart){ //check if cart is already set in the function
-            $scope.total += cart.Price; //sum the total value of each product
+    $scope.add_cart = function(product){ 
+        $scope.dem = 0;
+        for(let i=0; i<$scope.carts.length; i++)
+        {
+            if($scope.carts[i].id === product.id)
+            {
+                $scope.carts[i].quantity++;
+                $scope.dem++;
+            }
         }
+        if($scope.dem === 0)
+        {
+            $scope.carts.push({id: product.id, 
+               name: product.name, 
+               Price: product.Price, 
+               dungTich : product.dungTich, 
+               image: product.image,
+               quantity:1
+           });  
+        }
+     $scope.total = 0;  
+     window.sessionStorage.setItem('carts', angular.toJson($scope.carts));
     }
-    $scope.remove_cart = function(cart){ //set a function called remove_cart
-        if(cart){ //checked if the cart has a value
-            $scope.carts.splice($scope.carts.indexOf(cart), 1); //delete a product based on the index 
-            $scope.total -= cart.Price; //deduct the price of the product  simultaneously when deleted
+
+
+    $scope.cartPrice=function(cart)
+    {
+        return ( cart.Price*cart.quantity);
+    }
+
+
+
+    $scope.UpdateLai=function(cart)
+    {
+        for(let i=0; i<$scope.carts.length; i++)
+        {
+            if($scope.carts[i].id === cart.id)
+            {
+                $scope.carts[i].quantity == cart.quantity;
+            }
         }
+        window.sessionStorage.setItem('carts', angular.toJson($scope.carts));
+        $scope.carts = angular.fromJson(window.sessionStorage.getItem('carts'));
+        $scope.total=0;
+        $scope.setTotals();
+    }
+
+    $scope.setTotals = function(){ 
+        angular.forEach($scope.carts, function(cart, key) {
+            $scope.total += cart.Price*cart.quantity;
+          });
+    }
+
+    $scope.remove_cart = function(cart){ 
+        if(cart){ 
+            $scope.carts.splice($scope.carts.indexOf(cart), 1); 
+            if($scope.total <= 0)
+            {
+                $scope.total = 0;
+            }else{
+                $scope.total -= cart.Price*cart.quantity; 
+            }
+        }
+        window.sessionStorage.setItem('carts', angular.toJson($scope.carts));
     }
    
 });

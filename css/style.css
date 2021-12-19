@@ -431,7 +431,7 @@ body {
 	justify-content: space-around;
 }
 .dangNhap_Form .dangNhapThem .faceGoogle .face {
-	width: 103px;
+	width: 120px;
 	background-color: #5e5ef0;
 	border-radius: 5px;
 	padding: 5px;
@@ -446,7 +446,7 @@ body {
 	border-right: 1px solid black;
 }
 .dangNhap_Form .dangNhapThem .faceGoogle .google {
-	width: 103px;
+	width: 120px;
 	background-color: #e41d27;
 	border-radius: 5px;
 	padding: 5px;
@@ -483,18 +483,53 @@ body {
 .gioHang_Show .table thead {
 	font-size: 25px;
 	font-family: 'Times New Roman', Times, serif;
+	height: 50px;
 }
 .gioHang_Show .table tbody td {
-	text-align: center;
 	font-family: 'Times New Roman', Times, serif;
 	font-size: 18px;
+	width: 130px;
+	text-align: center;
+	height: 100px;
 }
 .gioHang_Show .table tbody td .fas {
 	color: red;
 }
+.gioHang_Show .table thead,
+thead tr,
+thead tr th {
+	border: none;
+}
+.gioHang_Show .table,
+.table tbody tr,
+tbody td {
+	border: none;
+}
+.gioHang_Show .table tbody tr td {
+	border-bottom: 2px solid #eb9cdd;
+}
+
 .gioHang_Show .table tbody .total {
 	font-size: 25px;
 	color: red;
 }
-
+.gioHang_Show .TableSanPham {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.gioHang_Show .btnXoa {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+.gioHang_Show .inputQuantity {
+	width: 50px;
+}
+.gioHang_Show .thSanPham {
+	text-align: left;
+}
+.tongTien {
+	color: #1e73be;
+}
 /*# sourceMappingURL=style.css.map */
