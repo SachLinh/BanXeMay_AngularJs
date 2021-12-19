@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="/admin/Lib/angular.min.js"></script>
+        <script src="/admin/Lib/angular-route.min.js"></script>
+        <script src="/admin/App.js"></script>
+        <!--Data Import-->
+        <script src="/admin/Data/accout.js"></script>
+        <script src="/admin/Data/motobike.js"></script>
+        <!---->
+        <link rel="stylesheet" href="/admin/CSS/layout.css">
+
+    </head>
+    <body ng-app="admin">
+        <div class="side_menu">
+            <div class="container">
+                <ul class="list" >
+                    <p>Admin</p>
+                    <li class="item"><a href="#!motobike">Quản lý xe</a></li>
+                    <li class="item"><a href="#!account">Quản lý tài khoản</a></li>
+                    <li class="item"><a href="#!donhang">Đơn Hàng</a></li>
+                    <li class="item"><a href="">Trở về</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container_main">
+            <div class="header" >
+                <span>GK SHOP</span>
+            </div>
+
+
+            <div class="content" ng-view="main">
+                aaaaa
+            </div>
+        </div>
+    </body>
+</html>

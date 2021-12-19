@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="/admin/CSS/accountManager.css">
+<h2>Tài khoản</h2>
+<div class="boxField">
+    <div class="box">
+        <div>
+            <p>Tài khoản:</p>
+            <input type="text" ng-model="user.username">
+        </div>
+        <div>
+            <p>Mật khẩu:</p>
+            <input type="text" ng-model="user.password">
+        </div>
+        <div>
+            <p>Họ tên:</p>
+            <input type="text" ng-model="user.name">
+        </div>
+        <div>
+            <p>Tuổi:</p>
+            <input type="text" ng-model="user.age">
+        </div>
+        <div>
+            <p>Số điện thoại:</p>
+            <input type="text" ng-model="user.phone">
+        </div>
+        <div>
+            <p>Địa chỉ:</p>
+            <input type="text" ng-model="user.address">
+        </div>
+        <div>
+            <button id="add" ng-click="add()">Thêm mới</button>
+            <button id="update" ng-click="update()">Sửa</button>
+        </div>
+    </div>
+</div>
+<div class="list_account" >
+    <div class="boxList">
+
+        <div id="headerlist">
+            &nbsp;
+            <span class="tbTitle">Tài khoản</span>
+            <span class="tbTitle">Mật khẩu</span>
+            <span class="tbTitle">Họ tên</span>
+            <span class="tbTitle">Tuổi</span>
+            <span class="tbTitle">Số ĐT</span>
+            <span class="tbTitle">Địa chỉ</span>
+            &nbsp;
+        </div>
+        <hr>
+        <div ng-click="display($index)" id="item" ng-repeat="x in list_account">
+            <span class="rowitem">{{x.username}}</span>
+            <span class="rowitem">{{x.password}}</span>
+            <span class="rowitem">{{x.name}}</span>
+            <span class="rowitem">{{x.age}}</span>
+            <span class="rowitem">{{x.phone}}</span>
+            <span class="rowitem">{{x.address}}</span>
+            <span class="x" ng-click="delete($index)">x</span>
+            <br>
+            
+        </div>
+    </div>
+</div>

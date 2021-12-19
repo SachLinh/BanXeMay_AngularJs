@@ -1,0 +1,66 @@
+<!-- @format -->
+<link rel="stylesheet" href="/admin/CSS/donHang.css" />
+<h2>Đơn hàng</h2>
+<div class="boxField">
+	<div class="box">
+		<div>
+			<p>Mã Đơn Hàng</p>
+			<input type="text" ng-model="" />
+		</div>
+		<div>
+			<p>Họ tên khách hàng</p>
+			<input type="text" ng-model="" />
+		</div>
+		<div>
+			<p>Ngày mua</p>
+			<input type="text" ng-model="" />
+		</div>
+		<div>
+			<p>Địa chỉ</p>
+			<input type="text" ng-model="" />
+		</div>
+		<div>
+			<p>Email</p>
+			<input type="text" ng-model="" />
+		</div>
+		<div>
+			<p>Tổng tiền</p>
+			<input type="text" ng-model="" />
+		</div>
+		<div>
+			<p>Trạng thái</p>
+			<input type="text" ng-model="" />
+		</div>
+		<div>
+			<button id="add" ng-click="">Đã giao</button>
+			<button id="update" ng-click="">Hủy đơn hàng</button>
+		</div>
+	</div>
+</div>
+<div class="list_donHang">
+	<div class="boxList">
+		<div id="headerlist">
+			&nbsp;
+			<span class="tbTitle">Mã đơn hàng</span>
+			<span class="tbTitle">Họ tên KH</span>
+			<span class="tbTitle">Ngày mua</span>
+			<span class="tbTitle">Địa chỉ</span>
+			<span class="tbTitle">Email</span>
+			<span class="tbTitle">Tổng tiền</span>
+			<span class="tbTitle">Trạng thái</span>
+			&nbsp;
+		</div>
+		<hr />
+		<div ng-click="" id="item" ng-repeat="">
+			<span class="rowitem"></span>
+			<span class="rowitem"></span>
+			<span class="rowitem"></span>
+			<span class="rowitem"></span>
+			<span class="rowitem"></span>
+			<span class="rowitem"></span>
+			<span class="rowitem"></span>
+			<span class="x" ng-click="">x</span>
+			<br />
+		</div>
+	</div>
+</div>

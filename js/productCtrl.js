@@ -34,7 +34,7 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
         return price * 0.9;
     }
 
-    // Filter by product
+    // Filter by price
     $scope.filterByPrice = function() {
         $scope.products = [];
         for(let i = 0; i < bikes.length; i++) {
