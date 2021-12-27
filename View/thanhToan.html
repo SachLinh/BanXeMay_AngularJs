@@ -1,0 +1,83 @@
+<!-- @format -->
+
+<style>
+    input.ng-invalid {
+        border: 1px solid red;
+    }
+</style>
+<div class="thanhToan">
+    <div class="container">
+        <form name="frm" class="frm">
+            <div class="thanhToan_root">
+                <h2>Thanh toán</h2>
+                <div class="thanhToan_FormInput">
+                    <h3>Thông tin nhận hàng</h3>
+                    <form class="thanhToam_Form">
+                        <div><input type="email" name="email" placeholder="Email..." ng-model="newData.email" required>
+                            <span ng-show="frm.email.$error.required">Nhập email</span>
+                            <!-- <span ng-show="frm.email.$dirty && frm.email.$error.required">Nhập email</span> -->
+                            <!-- <span ng-show="frm.email.$dirty && frm.email.$error.email">Không phải là một email</span> -->
+                        </div>
+                        <div><input type="text" name="name" placeholder="Họ tên..." ng-model="newData.name" required>
+                            <span ng-show="frm.name.$error.required">Nhập họ tên</span>
+                        </div>
+                        <div><input type="tel" name="phone" placeholder="Số điện thoại..." ng-model="newData.phone" required>
+                            <span ng-show="frm.phone.$error.required">Nhập số điện thoại</span>
+                        </div>
+                        <div><input type="text" name="address" placeholder="Địa chỉ..." ng-model="newData.address" required>
+                            <span ng-show="frm.address.$error.required">Nhập địa chỉ nhận</span>
+                        </div>
+                    </form>
+                    <div style="width: 215px; border: 1px solid black; margin-top: 5px; margin-bottom: 10px; font-size: 15px;">
+                        <input type="checkbox" name="check" id="check" style="width: 30px; display: inline;">
+                        <label for="check">Thanh toán khi giao hàng</label>
+                    </div>
+                </div>
+            </div>
+            <div class="thanhToan_Show">
+                <table class="table" border="0" cellpadding="0" cellspacing="5">
+                    <thead>
+                        <tr style="border-bottom: 1px solid black">
+                            <th class="thSanPham">Sản phẩm</th>
+                            <th>Dung tích</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" cart in carts">
+                            <td>
+                                <div class="TableSanPham">
+                                    <img src="{{cart.image}}" alt="Xe may" width="80" height="80" /> {{cart.name}}
+                                </div>
+                            </td>
+                            <td>{{cart.dungTich}}</td>
+                            <td>{{cart.Price | currency}}</td>
+                            <td>
+                                <input type="number" ng-model="cart.quantity" min="1" value="{{cart.quantity}}" class="inputQuantity" />
+                            </td>
+                            <td>{{ cartPrice(cart) | currency}}</td>
+                        </tr>
+                        <tr class="totolTr">
+                            <td class="total" colspan="4" style="text-align: right">
+                                <span ng-init="setTotals()">Tổng tiền:</span>
+                            </td>
+                            <td colspan="1" class="tongTien">{{total |currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="thanhToan_datHang">
+                <a ng-href="#!/gioHang">
+                    <button type="button" class="btn-btn button">Quay lại giỏ hàng</button>
+                </a>
+                <a ng-href="#!/Thank">
+                    <button type="button" class="btn-btn button" ng-click="add_KhachHang(newData)" ng-disabled="frm.$invalid">Đặt hàng</button>
+                </a>
+            </div>
+        </form>
+    </div>
+
+</div>
+</div>

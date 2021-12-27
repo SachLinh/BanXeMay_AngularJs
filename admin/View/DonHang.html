@@ -2,65 +2,69 @@
 <link rel="stylesheet" href="/admin/CSS/donHang.css" />
 <h2>Đơn hàng</h2>
 <div class="boxField">
-	<div class="box">
-		<div>
-			<p>Mã Đơn Hàng</p>
-			<input type="text" ng-model="" />
-		</div>
-		<div>
-			<p>Họ tên khách hàng</p>
-			<input type="text" ng-model="" />
-		</div>
-		<div>
-			<p>Ngày mua</p>
-			<input type="text" ng-model="" />
-		</div>
-		<div>
-			<p>Địa chỉ</p>
-			<input type="text" ng-model="" />
-		</div>
-		<div>
-			<p>Email</p>
-			<input type="text" ng-model="" />
-		</div>
-		<div>
-			<p>Tổng tiền</p>
-			<input type="text" ng-model="" />
-		</div>
-		<div>
-			<p>Trạng thái</p>
-			<input type="text" ng-model="" />
-		</div>
-		<div>
-			<button id="add" ng-click="">Đã giao</button>
-			<button id="update" ng-click="">Hủy đơn hàng</button>
-		</div>
-	</div>
+    <div class="box">
+        <div>
+            <p>Mã Đơn Hàng</p>
+            <input type="text" ng-model="donhang.maDH" />
+        </div>
+        <div>
+            <p>Email</p>
+            <input type="email" ng-model="donhang.email" />
+        </div>
+        <div>
+            <p>Họ tên</p>
+            <input type="email" ng-model="donhang.name" />
+        </div>
+        <div>
+            <p>Số điện thoại</p>
+            <input type="email" ng-model="donhang.phone" />
+        </div>
+        <div>
+            <p>Địa chỉ</p>
+            <input type="text" ng-model="donhang.address" />
+        </div>
+        <div>
+            <p>Ngày mua</p>
+            <input type="text" ng-model="donhang.ngay" />
+        </div>
+        <div>
+            <p>Tổng tiền</p>
+            <input type="text" ng-model="donhang.tongtien" />
+        </div>
+        <div>
+            <p>Trạng thái</p>
+            <input type="text" ng-model="donhang.trangthai" />
+        </div>
+        <div>
+            <button id="add" ng-click="update()">Cập nhật</button>
+        </div>
+    </div>
 </div>
 <div class="list_donHang">
-	<div class="boxList">
-		<div id="headerlist">
-			&nbsp;
-			<span class="tbTitle">Mã đơn hàng</span>
-			<span class="tbTitle">Họ tên KH</span>
-			<span class="tbTitle">Ngày mua</span>
-			<span class="tbTitle">Địa chỉ</span>
-			<span class="tbTitle">Email</span>
-			<span class="tbTitle">Tổng tiền</span>
-			<span class="tbTitle">Trạng thái</span>
-			&nbsp;
-		</div>
-		<hr />
-		<div ng-click="" id="item" ng-repeat="">
-			<span class="rowitem"></span>
-			<span class="rowitem"></span>
-			<span class="rowitem"></span>
-			<span class="rowitem"></span>
-			<span class="rowitem"></span>
-			<span class="rowitem"></span>
-			<span class="rowitem"></span>
-			<span class="x" ng-click="">x</span>
-			<br />
-		</div>
-	</div>
+    <div class="boxList">
+        <div id="headerlist">
+            &nbsp;
+            <span class="tbTitle">Mã đơn hàng</span>
+            <span class="tbTitle">Email</span>
+            <span class="tbTitle">Họ tên</span>
+            <span class="tbTitle">Số điện thoại</span>
+            <span class="tbTitle">Địa chỉ</span>
+            <span class="tbTitle">Ngày mua</span>
+            <span class="tbTitle">Tổng tiền</span>
+            <span class="tbTitle">Trạng thái</span> &nbsp;
+        </div>
+        <hr />
+        <div ng-click="display($index)" id="item" ng-repeat="c in list_donhang">
+            <span class="rowitem">{{"DH"+$index}}</span>
+            <span class="rowitem">{{c.email}}</span>
+            <span class="rowitem">{{c.name}}</span>
+            <span class="rowitem">{{c.phone}}</span>
+            <span class="rowitem">{{c.address}}</span>
+            <span class="rowitem">{{c.ngay}}</span>
+            <span class="rowitem">{{c.tongtien}}</span>
+            <span class="rowitem">{{c.trangthai}}</span>
+            <span class="x" ng-click="delete($index)">x</span>
+            <br />
+        </div>
+    </div>
 </div>
