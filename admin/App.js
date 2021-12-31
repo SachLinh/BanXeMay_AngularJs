@@ -211,6 +211,15 @@ admin.controller("donHangCtrl", function($scope) {
         $scope.list_donhang = angular.fromJson(localStorage.getItem("KhachHang"));
     }
 
+    $scope.huy = function(index){
+        $scope.list_donhang[index].trangthai = "Hủy";
+        localStorage.setItem("KhachHang", angular.toJson($scope.list_donhang))
+    }
+
+    $scope.giao = function(index){
+        $scope.list_donhang[index].trangthai = "Giao";
+        localStorage.setItem("KhachHang", angular.toJson($scope.list_donhang))
+    }
 
 
 
