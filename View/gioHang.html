@@ -1,58 +1,79 @@
 <!-- @format -->
 
 <div class="gioHang">
-    <div class="container">
-        <div class="gioHang_root">
-            <h2>Giỏ Hàng</h2>
-            <div class="gioHang_Show">
-                <table class="table" border="1" cellpadding="0" cellspacing="0">
-                    <thead>
-                        <tr style="border-bottom: 1px solid black">
-                            <th class="thSanPham">Sản phẩm</th>
-                            <th>Dung tích</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Thành tiền</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat=" cart in carts">
-                            <td>
-                                <div class="TableSanPham">
-                                    <button type="button" ng-click="remove_cart(cart)" class="btn btn-danger btnXoa">
+	<div class="container">
+		<div class="gioHang_root">
+			<h2>Giỏ Hàng</h2>
+			<div class="gioHang_Show">
+				<table class="table" border="1" cellpadding="0" cellspacing="0">
+					<thead>
+						<tr style="border-bottom: 1px solid black">
+							<th class="thSanPham">Sản phẩm</th>
+							<th>Dung tích</th>
+							<th>Giá</th>
+							<th>Số lượng</th>
+							<th>Thành tiền</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat=" cart in carts">
+							<td>
+								<div class="TableSanPham">
+									<button
+										type="button"
+										ng-click="remove_cart(cart)"
+										class="btn btn-danger btnXoa"
+									>
 										<i class="fas fa-backspace"></i>
 									</button>
-                                    <img src="{{cart.image}}" alt="Xe may" width="80" height="80" /> {{cart.name}}
-                                </div>
-                            </td>
-                            <td>{{cart.dungTich}}</td>
-                            <td>{{cart.Price | currency}}</td>
-                            <td>
-                                <input type="number" ng-model="cart.quantity" min="1" value="{{cart.quantity}}" class="inputQuantity" />
-                                <button ng-click="UpdateLai(cart)">
+									<img
+										src="{{cart.image}}"
+										alt="Xe may"
+										width="80"
+										height="80"
+									/>
+									{{cart.name}}
+								</div>
+							</td>
+							<td>{{cart.dungTich}}</td>
+							<td>{{cart.Price | currency}}</td>
+							<td>
+								<input
+									type="number"
+									ng-model="cart.quantity"
+									min="1"
+									value="{{cart.quantity}}"
+									class="inputQuantity"
+								/>
+								<button ng-click="UpdateLai(cart)">
 									<i class="far fa-check-circle"></i>
 								</button>
-                            </td>
-                            <td>{{ cartPrice(cart) | currency}}</td>
-                        </tr>
-                        <tr class="totolTr">
-                            <td class="total" colspan="4" style="text-align: right">
-                                <span ng-init="setTotals()">Tổng tiền:</span>
-                            </td>
-                            <td colspan="1" class="tongTien">{{total |currency}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="text-align: right;">
-                                <a href="#!/thanhToan">
-                                    <button type="button" class="btn btn-payment" ng-click="add_cart1(carts)" value="Thanh toán">
-									<span>Thanh toán</span>
-								</button>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+							</td>
+							<td>{{ cartPrice(cart) | currency}}</td>
+						</tr>
+						<tr class="totolTr">
+							<td class="total" colspan="4" style="text-align: right">
+								<span ng-init="setTotals()">Tổng tiền:</span>
+							</td>
+							<td colspan="1" class="tongTien">{{total |currency}}</td>
+						</tr>
+						<tr>
+							<td colspan="5" style="text-align: right">
+								<a href="#!/thanhToan">
+									<button
+										type="button"
+										class="btn btn-payment"
+										ng-click="add_cart1(carts)"
+										value="Thanh toán"
+									>
+										<span>Thanh toán</span>
+									</button>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>

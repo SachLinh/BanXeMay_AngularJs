@@ -39,6 +39,7 @@ app.controller('myCtrl', function($scope) {
             });
         }
         $scope.total = 0;
+        $scope.setTotals();
         window.sessionStorage.setItem('carts', angular.toJson($scope.carts));
     }
 
@@ -62,7 +63,7 @@ app.controller('myCtrl', function($scope) {
     }
 
     $scope.setTotals = function() {
-        $scope.setTotals = 0;
+        $scope.total = 0;
         angular.forEach($scope.carts, function(cart, key) {
             $scope.total += cart.Price * cart.quantity;
         });
