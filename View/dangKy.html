@@ -6,49 +6,108 @@
 			<h2>ĐĂNG NHẬP TÀI KHOẢN</h2>
 			<h4>Bạn chưa có tài khoản? <a href="#!/dangKy">Đăng ký tại đây</a></h4>
 			<div class="dangNhap_FormInput">
-				<form class="dangNhap_Form">
-					<label for="hoTen">Họ tên<span class="sao">*</span></label
+				<form
+					class="dangNhap_Form"
+					name="myForm"
+					novalidate
+					ng-init="a in acc"
+				>
+					<label for="name">Họ tên<span class="sao">*</span></label
 					><br />
 					<input
-						name="hoTen"
-						id="hoTen"
-						class="hoTen"
-						placeholder="Họ tên....."
-					/><br />
-					<label for="email">Email<span class="sao">*</span></label
-					><br />
-					<input
-						name="email"
-						id="email"
-						class="dangNhap_email"
-						placeholder="Email....."
-					/><br />
-					<label for="matKhau">Mật khẩu<span class="sao">*</span></label
-					><br />
-					<input
-						name="matKhau"
-						id="matKhau"
-						type="password"
-						class="dangNhap_MatKhau"
-						placeholder="Mật khẩu....."
-					/><br />
-					<label for="diaChi">Địa chỉ<span class="sao">*</span></label
-					><br />
-					<input
-						name="diaChi"
-						id="diaChi"
+						name="name"
 						type="text"
-						class="dangNhap_DiaChi"
+						id="name"
+						class="name"
+						placeholder="Họ tên....."
+						ng-model="a.name"
+						value="{{a.name}}"
+						required
+					/>
+					<span
+						style="color: red"
+						ng-show="myForm.name.$dirty && myForm.name.$invalid"
+					>
+						<span ng-show="myForm.name.$error.required"
+							>Username is required.</span
+						>
+					</span>
+					<br />
+					<label for="phone">Số ĐT<span class="sao">*</span></label
+					><br />
+					<input
+						name="phone"
+						type="text"
+						id="phone"
+						class="dangNhap_email"
+						placeholder="phone....."
+						ng-model="a.phone"
+						value="{{a.phone}}"
+						required
+					/>
+					<span
+						style="color: red"
+						ng-show="myForm.phone.$dirty && myForm.phone.$invalid"
+					>
+						<span ng-show="myForm.phone.$error.required"
+							>phone is required.</span
+						>
+					</span>
+					<br />
+					<label for="password">Mật khẩu<span class="sao">*</span></label
+					><br />
+					<input
+						name="password"
+						id="password"
+						type="password"
+						class="dangNhap_password"
+						placeholder="Mật khẩu....."
+						ng-model="a.password"
+						value="{{a.password}}"
+						required
+					/>
+					<span
+						style="color: red"
+						ng-show="myForm.password.$dirty && myForm.password.$invalid"
+					>
+						<span ng-show="myForm.password.$error.required"
+							>Password is required.</span
+						>
+					</span>
+					<br />
+					<label for="address">Địa chỉ<span class="sao">*</span></label
+					><br />
+					<input
+						name="address"
+						type="text"
+						id="address"
+						type="text"
+						class="dangNhap_address"
 						placeholder="Đại chỉ....."
-					/><br />
+						ng-model="a.address"
+						value="{{a.address}}"
+						required
+					/>
+					<span
+						style="color: red"
+						ng-show="myForm.address.$dirty && myForm.address.$invalid"
+					>
+						<span ng-show="myForm.address.$error.required"
+							>Địa chỉ is required.</span
+						>
+					</span>
+					<br />
 
-					<span class="quenMatKhau"
+					<span class="quenpassword"
 						>Quên mật khẩu? Nhấn vào
 						<a href="#" class="day">đây</a> </span
 					><br />
-					<a href="#"
-						><button type="submit" class="btnDangNhap">Đăng ký</button></a
-					>
+					<input
+						type="button"
+						class="btnDangNhap"
+						ng-click="addAccount(a)"
+						value="Đăng ký"
+					/>
 					<div class="dangNhapThem">
 						<p>Hoặc đăng nhập bằng</p>
 						<div class="faceGoogle">
