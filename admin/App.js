@@ -192,8 +192,8 @@ admin.controller("accountCtrl", function($scope) {
     $scope.update = function() {
 
         angular.forEach($scope.list_account, function(value, key) {
-            if (value.username == $scope.user.username) {
-                value.password = $scope.user.password;
+            if (value.phone == $scope.user.phone) {
+                value.username = $scope.user.username;
                 value.name = $scope.user.name;
                 value.age = $scope.user.age;
                 value.phone = $scope.user.phone;
