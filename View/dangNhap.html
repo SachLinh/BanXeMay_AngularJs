@@ -7,32 +7,51 @@
 			<h4>Bạn chưa có tài khoản? <a href="#!/dangKy">Đăng ký tại đây</a></h4>
 			<div class="dangNhap_FormInput">
 				<form class="dangNhap_Form">
-					<label for="email">Email<span class="sao">*</span></label
+					<label for="username">Username<span class="sao">*</span></label
 					><br />
 					<input
-						name="email"
-						id="email"
-						class="dangNhap_email"
-						placeholder="Email....."
-					/><br />
-					<label for="matKhau">Mật khẩu<span class="sao">*</span></label
+						name="username"
+						type="text"
+						id="username"
+						class="name"
+						placeholder="user name....."
+						required
+					/>
+					<span
+						style="color: red"
+						ng-show="myForm.username.$dirty && myForm.username.$invalid"
+					>
+						<span ng-show="myForm.username.$error.required"
+							>Username is required.</span
+						>
+					</span>
+					<br />
+					<label for="password">Mật khẩu<span class="sao">*</span></label
 					><br />
 					<input
-						name="matKhau"
-						id="matKhau"
+						name="password"
+						id="password"
 						type="password"
-						class="dangNhap_MatKhau"
+						class="dangNhap_password"
 						placeholder="Mật khẩu....."
-					/><br />
+						ng-model="a.password"
+						value="{{a.password}}"
+						required
+					/>
+					<span
+						style="color: red"
+						ng-show="myForm.password.$dirty && myForm.password.$invalid"
+					>
+						<span ng-show="myForm.password.$error.required"
+							>Password is required.</span
+						>
+					</span>
+					<br />
 					<span class="quenMatKhau"
 						>Quên mật khẩu? Nhấn vào
 						<a href="#" class="day">đây</a> </span
 					><br />
-					<a href="#"
-						><button type="submit" class="btnDangNhap">
-							Đăng nhập
-						</button></a
-					>
+					<input type="button" class="btnDangNhap" value="Đăng nhập" />
 					<div class="dangNhapThem">
 						<p>Hoặc đăng nhập bằng</p>
 						<div class="faceGoogle">

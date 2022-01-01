@@ -12,6 +12,27 @@
 					novalidate
 					ng-init="a in acc"
 				>
+					<label for="username">Username<span class="sao">*</span></label
+					><br />
+					<input
+						name="username"
+						type="text"
+						id="username"
+						class="name"
+						placeholder="user name....."
+						ng-model="a.username"
+						value="{{a.username}}"
+						required
+					/>
+					<span
+						style="color: red"
+						ng-show="myForm.username.$dirty && myForm.username.$invalid"
+					>
+						<span ng-show="myForm.username.$error.required"
+							>Username is required.</span
+						>
+					</span>
+					<br />
 					<label for="name">Họ tên<span class="sao">*</span></label
 					><br />
 					<input
@@ -29,7 +50,7 @@
 						ng-show="myForm.name.$dirty && myForm.name.$invalid"
 					>
 						<span ng-show="myForm.name.$error.required"
-							>Username is required.</span
+							>Ho ten is required.</span
 						>
 					</span>
 					<br />

@@ -43,7 +43,15 @@ app.controller('myCtrl', function($scope) {
                 window.alert(" Số điện thoại này đã được đăng ký. Vui lòng đăng ký số đt khác!");
                 $scope.dem0++;
             }
+            if ($scope.accounts[i].username === a.username) {
+                window.alert(" Username này đã được đăng ký. Vui lòng đăng ký số username khác!");
+                $scope.dem0++;
+            }
         }
+        if(!a.username)
+            {
+                window.alert(" Vui lòng nhập username!");  $scope.dem0++;
+            }
         if(!a.password)
             {
                 window.alert(" Vui lòng nhập mật khẩu!");  $scope.dem0++;
@@ -66,7 +74,7 @@ app.controller('myCtrl', function($scope) {
                     phone: a.phone,
                     password: a.password,
                     address: a.address,
-                    username:"",
+                    username:a.username,
                     age: 0});
                 window.localStorage.setItem('accounts', angular.toJson($scope.accounts));
                 window.alert(" Đăng ký thành công!");
