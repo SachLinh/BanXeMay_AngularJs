@@ -19,6 +19,52 @@ app.controller('myCtrl', function($scope) {
         $scope.carts = angular.fromJson(window.sessionStorage.getItem('carts'));
     }
 
+
+    // Đăng ký accounts
+    $scope.accounts = [];
+    if (window.localStorage.getItem('accounts') == null) {
+        window.localStorage.setItem('accounts', angular.toJson($scope.accounts));
+    }
+    if (window.localStorage.getItem('accounts')) {
+        $scope.accounts = angular.fromJson(window.localStorage.getItem('accounts'));
+    }
+
+    $scope.acc = {name: "",
+        phone: "",
+        password: "",
+        address: "",
+        username:"",
+        age: 0};
+    $scope.addAccount = function(a)
+    {
+        $scope.dem0 = 0;
+        for (let i = 0; i < $scope.accounts.length; i++) {
+            if ($scope.accounts[i].phone === a.phone) {
+                window.alert(" Số điện thoại này đã được đăng ký. Vui lòng đăng ký số đt khác!");
+                $scope.dem0++;
+            }
+        }
+        if(!a.password)
+            {
+                window.alert(" Vui lòng nhập mật khẩu!");
+                $scope.dem0++;
+            }
+        if($scope.dem0 === 0){
+
+                $scope.accounts.push({ name: a.name,
+                    phone: a.phone,
+                    password: a.password,
+                    address: a.address,
+                    username:"",
+                    age: 0});
+                window.localStorage.setItem('accounts', angular.toJson($scope.accounts));
+                window.alert(" Đăng ký thành công!");
+        }
+    }
+
+
+
+
     $scope.total = 0;
     $scope.add_cart = function(product) {
         $scope.dem = 0;
