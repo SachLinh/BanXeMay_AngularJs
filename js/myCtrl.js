@@ -46,8 +46,19 @@ app.controller('myCtrl', function($scope) {
         }
         if(!a.password)
             {
-                window.alert(" Vui lòng nhập mật khẩu!");
-                $scope.dem0++;
+                window.alert(" Vui lòng nhập mật khẩu!");  $scope.dem0++;
+            }
+        if(!a.phone)
+            {
+                window.alert(" Vui lòng nhập số điện thoại!"); $scope.dem0++;
+            }
+        if(!a.address)
+            {
+                window.alert(" Vui lòng nhập địa chỉ!"); $scope.dem0++;
+            }
+        if(!a.name)
+            {
+                window.alert(" Vui lòng nhập họ tên!");  $scope.dem0++;
             }
         if($scope.dem0 === 0){
 
