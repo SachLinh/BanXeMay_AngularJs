@@ -44,16 +44,16 @@ body {
 .header h1 {
     margin-right: 50px;
     margin-left: 10px;
-    margin-right: 230px;
+    margin-right: 170px;
     color: #11519b;
 }
 
 .header_TimKiem {
-    margin-right: 95px;
+    margin-right: 60px;
 }
 
 .header_TimKiem select {
-    width: 50px;
+    max-width: 90px;
     height: 30px;
     border-radius: 20px;
 }
@@ -62,7 +62,7 @@ body {
     width: 430px;
     height: 25px;
     border-radius: 20px;
-    margin-right: 40px;
+    margin-right: 20px;
     padding-left: 20px;
     outline: none;
     border: 1px solid #777777;

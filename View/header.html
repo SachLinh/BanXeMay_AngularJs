@@ -9,6 +9,9 @@
                 </select>
                 <input placeholder="Search..." ng-model="find" />
             </div>
+            <div ng-if="account.username" style="color: rgb(218, 0, 145); margin-right: 20px;">
+                {{account.username}}
+            </div>
             <div class="header_LogIn">
                 <a href="#!/dangNhap">
                     <i class="fas fa-user-alt"></i>

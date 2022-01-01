@@ -1,4 +1,4 @@
-app.controller('myCtrl', function($scope) {
+app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
     // $scope.products = listLT;
     // $scope.brands = listBrand;
     $scope.products = [];
@@ -81,9 +81,37 @@ app.controller('myCtrl', function($scope) {
         }
     }
 
+    //Dang nhap
+    $scope.account = {};
+    if (sessionStorage.getItem('account')) {
+        $scope.account = angular.fromJson(sessionStorage.getItem('account'));
+    }
+    let count = 0;
 
+    $scope.login = function() {
+        for (let i = 0; i < $scope.accounts.length; i++) {
+            if ($scope.accounts[i].username === $scope.login.username && $scope.accounts[i].password === $scope.login.password) {
+                count = 1;
+                sessionStorage.setItem('account', angular.toJson($scope.accounts[i]));
+                $scope.tenDangNhap = $scope.accounts[i].username;
+                break;
+            }
+        }
+        if(count == 1) {
+            if (sessionStorage.getItem('account')) {
+                $scope.account = angular.fromJson(sessionStorage.getItem('account'));
+            }
+            if($scope.account) {
+                window.alert("Đăng nhập thành công! \n\nChào mừng " + $scope.account.username + " đến với GK Shop ^-^");
+                $location.path('/content');
+            }
+        }
+        else{
+            window.alert("Thông tin đăng nhập không chính xác!!");
+        }
+    }
 
-
+    //Gio hang
     $scope.total = 0;
     $scope.add_cart = function(product) {
         $scope.dem = 0;
@@ -168,4 +196,4 @@ app.controller('myCtrl', function($scope) {
     var today = new Date();
     $scope.date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
     var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-});
+}]);

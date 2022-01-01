@@ -14,6 +14,7 @@
 						type="text"
 						id="username"
 						class="name"
+						ng-model="login.username"
 						placeholder="user name....."
 						required
 					/>
@@ -34,8 +35,7 @@
 						type="password"
 						class="dangNhap_password"
 						placeholder="Mật khẩu....."
-						ng-model="a.password"
-						value="{{a.password}}"
+						ng-model="login.password"
 						required
 					/>
 					<span
@@ -51,7 +51,7 @@
 						>Quên mật khẩu? Nhấn vào
 						<a href="#" class="day">đây</a> </span
 					><br />
-					<input type="button" class="btnDangNhap" value="Đăng nhập" />
+					<input type="button" class="btnDangNhap" value="Đăng nhập" ng-click="login()" />
 					<div class="dangNhapThem">
 						<p>Hoặc đăng nhập bằng</p>
 						<div class="faceGoogle">
