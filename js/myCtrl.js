@@ -11,13 +11,6 @@ app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
         $scope.products = angular.fromJson(localStorage.getItem('bikes'));
     }
 
-    $scope.carts = [];
-    if (window.sessionStorage.getItem('carts') == null) {
-        window.sessionStorage.setItem('carts', angular.toJson($scope.carts));
-    }
-    if (window.sessionStorage.getItem('carts')) {
-        $scope.carts = angular.fromJson(window.sessionStorage.getItem('carts'));
-    }
 
 
     // Đăng ký accounts
@@ -78,6 +71,7 @@ app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
                     age: 0});
                 window.localStorage.setItem('accounts', angular.toJson($scope.accounts));
                 window.alert(" Đăng ký thành công!");
+                $location.path("/dangNhap");
         }
     }
 
@@ -120,6 +114,13 @@ app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
     }
 
     //Gio hang
+    $scope.carts = [];
+    if (window.sessionStorage.getItem('carts') == null) {
+        window.sessionStorage.setItem('carts', angular.toJson($scope.carts));
+    }
+    if (window.sessionStorage.getItem('carts')) {
+        $scope.carts = angular.fromJson(window.sessionStorage.getItem('carts'));
+    }
     $scope.total = 0;
     $scope.add_cart = function(product) {
         $scope.dem = 0;
