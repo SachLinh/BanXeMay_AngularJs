@@ -103,12 +103,12 @@ app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
                     $scope.account = angular.fromJson(sessionStorage.getItem('account'));
                 }
                 if($scope.account) {
-                    window.alert("Đăng nhập thành công! \n\nChào mừng " + $scope.account.username + " đến với GK Shop ^-^");
+                    alert("Đăng nhập thành công! \n\nChào mừng " + $scope.account.username + " đến với GK Shop ^-^");
                     $location.path('/content');
                 }
             }
             else{
-                window.alert("Thông tin đăng nhập không chính xác!!");
+                alert("Thông tin đăng nhập không chính xác!! \nVui lòng nhập lại! :((");
             }
         }
     }
