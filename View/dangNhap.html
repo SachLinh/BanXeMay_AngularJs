@@ -20,9 +20,9 @@
 					/>
 					<span
 						style="color: red"
-						ng-show="myForm.username.$dirty && myForm.username.$invalid"
+						ng-show="dangNhap_Form.username.$touched && myForm.username.$invalid"
 					>
-						<span ng-show="myForm.username.$error.required"
+						<span ng-show="dangNhap_Form.username.$error.required"
 							>Username is required.</span
 						>
 					</span>
@@ -40,9 +40,9 @@
 					/>
 					<span
 						style="color: red"
-						ng-show="myForm.password.$dirty && myForm.password.$invalid"
+						ng-show="dangNhap_Form.password.$dirty && myForm.password.$invalid"
 					>
-						<span ng-show="myForm.password.$error.required"
+						<span ng-show="dangNhap_Form.password.$error.required"
 							>Password is required.</span
 						>
 					</span>

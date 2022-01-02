@@ -9,16 +9,18 @@ app.config(function($routeProvider) {
         .when("/lienHe", {
             templateUrl: "../View/lienHe.html",
         })
+
         .when("/product", {
             templateUrl: "../View/product.html",
             controller: "productCtrl"
         })
-        .when("/productDetail/:productId", {
-            templateUrl: "../View/product_detail.html",
-            controller: "productCtrl"
-        })
         .when("/product/:brand", {
             templateUrl: "../View/product.html",
+            controller: "productCtrl"
+        })
+
+        .when("/productDetail/:productId", {
+            templateUrl: "../View/product_detail.html",
             controller: "productCtrl"
         })
         .when("/gioHang", {

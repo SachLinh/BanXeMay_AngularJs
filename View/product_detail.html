@@ -8,9 +8,9 @@
 		<div class="categories">
 			<span>DANH MỤC SẢN PHẨM</span>
 			<ul>
-                <li><a href="#!/product" ng-click="repage()"><i class="fa fa-angle-right"></i>TẤT CẢ</a></li>
+                <li><a href="#!/product" ng-click="all()"><i class="fa fa-angle-right"></i>TẤT CẢ</a></li>
                 <li ng-repeat="item in brands">
-                    <a href="#!/product/{{item}}"><i class="fa fa-angle-right"></i>{{item | uppercase}}</a>
+                    <a href="#!/product/{{item}}" ng-click="getBrand(item)"><i class="fa fa-angle-right"></i>{{item | uppercase}}</a>
                 </li>
             </ul>
 		</div>
