@@ -89,25 +89,33 @@ app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
     let count = 0;
 
     $scope.login = function() {
-        for (let i = 0; i < $scope.accounts.length; i++) {
-            if ($scope.accounts[i].username === $scope.login.username && $scope.accounts[i].password === $scope.login.password) {
-                count = 1;
-                sessionStorage.setItem('account', angular.toJson($scope.accounts[i]));
-                $scope.tenDangNhap = $scope.accounts[i].username;
-                break;
-            }
-        }
-        if(count == 1) {
-            if (sessionStorage.getItem('account')) {
-                $scope.account = angular.fromJson(sessionStorage.getItem('account'));
-            }
-            if($scope.account) {
-                window.alert("Đăng nhập thành công! \n\nChào mừng " + $scope.account.username + " đến với GK Shop ^-^");
-                $location.path('/content');
-            }
+
+        if($scope.login.username === "admin" && $scope.login.password === "admin"){
+            var adminLink = document.createElement('a');
+            adminLink.href = "../admin/AdminLayout.html";
+            adminLink.click();
         }
         else{
-            window.alert("Thông tin đăng nhập không chính xác!!");
+            for (let i = 0; i < $scope.accounts.length; i++) {
+                if ($scope.accounts[i].username === $scope.login.username && $scope.accounts[i].password === $scope.login.password) {
+                    count = 1;
+                    sessionStorage.setItem('account', angular.toJson($scope.accounts[i]));
+                    $scope.tenDangNhap = $scope.accounts[i].username;
+                    break;
+                }
+            }
+            if(count == 1) {
+                if (sessionStorage.getItem('account')) {
+                    $scope.account = angular.fromJson(sessionStorage.getItem('account'));
+                }
+                if($scope.account) {
+                    window.alert("Đăng nhập thành công! \n\nChào mừng " + $scope.account.username + " đến với GK Shop ^-^");
+                    $location.path('/content');
+                }
+            }
+            else{
+                window.alert("Thông tin đăng nhập không chính xác!!");
+            }
         }
     }
 
