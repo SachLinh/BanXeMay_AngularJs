@@ -4,10 +4,13 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
     // Product
     var bikes = angular.fromJson(localStorage.getItem('bikes'));
     $scope.brands = angular.fromJson(localStorage.getItem('brands'));
+    
     $scope.products = angular.fromJson(localStorage.getItem('bikes'));
+
     $scope.newProducts = [];
     $scope.productQuickView = [];
     $scope.hiddenView = false;
+
     var pageSize = 8;
     var update = function(pageSize) {
         $scope.pageSize = pageSize;
@@ -18,33 +21,6 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
     };
     update(pageSize);
 
-    // Product detail
-    var id = $routeParams.productId;
-    angular.forEach($scope.products, function(value, key) {
-        if(value.id == id) {
-            $scope.productDetail = angular.copy($scope.products[key]);
-        }
-    });
-    //New product
-    for(let i = $scope.products.length - 1; i >= $scope.products.length - 3; i--) {
-        $scope.newProducts.push($scope.products[i]);
-    }
-
-    $scope.getNewPrice = function(price) {
-        return price * 0.9;
-    }
-
-    // Filter by price
-    $scope.filterByPrice = function() {
-        $scope.products = [];
-        for(let i = 0; i < bikes.length; i++) {
-            if(bikes[i].Price >= $scope.fromPrice && bikes[i].Price <= $scope.toPrice) {
-                $scope.products.push(bikes[i]);
-            }
-        }
-        update(pageSize);
-    }
-
     //Filter by brand
     $scope.brand = "";
     if($routeParams.brand) {
@@ -52,7 +28,7 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
     }
 
     $scope.all = function() {
-        $scope.products = angular.fromJson(localStorage.getItem('bikes'));
+        $scope.products = bikes;
         update(pageSize);
     }
 
@@ -66,6 +42,26 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
         update(pageSize);
     }
 
+    // Filter by price
+    $scope.filterByPrice = function() {
+        $scope.products = [];
+        for(let i = 0; i < bikes.length; i++) {
+            if(bikes[i].Price >= $scope.fromPrice && bikes[i].Price <= $scope.toPrice) {
+                $scope.products.push(bikes[i]);
+            }
+        }
+        update(pageSize);
+    }
+
+    //New product
+    for(let i = $scope.products.length - 1; i >= $scope.products.length - 3; i--) {
+        $scope.newProducts.push($scope.products[i]);
+    }
+
+    $scope.getNewPrice = function(price) {
+        return price * 0.9;
+    }
+
     // Change view mode
     $scope.changeViewMode = function() {
         if($scope.viewMode == false) {
@@ -77,16 +73,6 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
         update(pageSize);
     }
 
-    // Quick view
-    $scope.quickView = function(product) {
-        $scope.productQuickView = product;
-        $scope.hiddenView = true;
-    }
-
-    $scope.closeQuickView = function() {
-        $scope.hiddenView = false;
-    }
-    
     // Pagination
     $scope.firstPage = function() {
         $scope.begin = 0;
@@ -111,5 +97,23 @@ app.controller('productCtrl', ['$scope', '$routeParams', function($scope, $route
         $scope.begin = ($scope.pageCount - 1) * $scope.pageSize;
         $scope.currentPage = $scope.pageCount;
     }
+
+    // Quick view
+    $scope.quickView = function(product) {
+        $scope.productQuickView = product;
+        $scope.hiddenView = true;
+    }
+
+    $scope.closeQuickView = function() {
+        $scope.hiddenView = false;
+    }
+    
+    // Product detail
+    var id = $routeParams.productId;
+    angular.forEach($scope.products, function(value, key) {
+        if(value.id == id) {
+            $scope.productDetail = angular.copy($scope.products[key]);
+        }
+    });
 
 }]);

@@ -80,10 +80,10 @@ app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
     if (sessionStorage.getItem('account')) {
         $scope.account = angular.fromJson(sessionStorage.getItem('account'));
     }
-    let count = 0;
-
+    
     $scope.login = function() {
-
+        let count = 0;
+        
         if($scope.login.username === "admin" && $scope.login.password === "admin"){
             var adminLink = document.createElement('a');
             adminLink.href = "../admin/AdminLayout.html";
@@ -94,7 +94,6 @@ app.controller('myCtrl', ['$scope', '$location', function($scope, $location) {
                 if ($scope.accounts[i].username === $scope.login.username && $scope.accounts[i].password === $scope.login.password) {
                     count = 1;
                     sessionStorage.setItem('account', angular.toJson($scope.accounts[i]));
-                    $scope.tenDangNhap = $scope.accounts[i].username;
                     break;
                 }
             }
